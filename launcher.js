@@ -1,7 +1,7 @@
 class Launcher {
     constructor (x, y) {
-      this.x = x;
-      this.y = y;
+      this.x = canvasElement.width / 2 - 10;
+      this.y = 50;
     }
   
       draw () {
@@ -9,8 +9,8 @@ class Launcher {
           context.fillRect (
               this.x,
               this.y,
-              50,
-              50
+              25,
+              25
           )
       }
   }

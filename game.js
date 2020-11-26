@@ -10,16 +10,20 @@ class Game {
     window.addEventListener('keydown', (event) => {
       switch(event.key) {
         case 'ArrowUp':
-          this.player.y -= 10;
+          if (this.player.y >= canvasElement.height - canvasElement / 2) {
+          this.player.y -= 10};
           break;
         case 'ArrowDown':
-          this.player.y += 10;
+          if (this.player.y <= canvasElement.height - 60) {
+          this.player.y += 10};
           break;
         case 'ArrowRight':
-          this.player.x += 10;
+          if (this.player.x <= canvasElement.width - 60) {
+          this.player.x += 10};
           break;
-        case 'Arrowleft':
-          this.player.x -= 10;
+        case 'ArrowLeft':
+          if (this.player.x >= 10) {
+          this.player.x -= 10};
           break;
       }
     });
@@ -29,7 +33,7 @@ class Game {
     this.runLogic();
     this.draw();
     window.requestAnimationFrame(() => {
-      this.loop();
+    this.loop();
     });
   }
 
@@ -40,18 +44,19 @@ runLogic () {
 }
 
 /* Run logic for balls --> to improve
-    runLogic () {
-      if (Math.random() < 0.5) {
+  runLogic () {
+    if (Math.random() < 0.5) {
 
-      }
-      this.launcher.push(new Ball(canvasWidth, Math.random() * canvasHeight));
     }
+    this.launcher.push(new Ball(canvasWidth, Math.random() * canvasHeight));
+  }
 */
 
 
-draw () {
-  context.clearRect(0, 0, canvasWidth, canvasHeight);
-  this.player.draw();
-  this.launcher.draw();
-}
+// Call draw method for every "element" in the game
+  draw () {
+      context.clearRect(0, 0, canvasWidth, canvasHeight);
+      this.player.draw();
+      this.launcher.draw();
+  }
 }
